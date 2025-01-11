@@ -1,18 +1,18 @@
-import  { useEffect, useState } from "react";
-import { store } from "../lib/store";
-import Container from "../ui/Container";
-import { Link } from "react-router-dom";
-import CartProduct from "../ui/CartProduct";
-import FormattedPrice from "../ui/FormattedPrice";
+import { useEffect, useState } from "react";
 import { FaQuestionCircle } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { store } from "../lib/store";
+import CartProduct from "../ui/CartProduct";
 import CheckoutButton from "../ui/CheckoutButton";
+import Container from "../ui/Container";
+import FormattedPrice from "../ui/FormattedPrice";
 
 const Cart = () => {
-  const [totalAmount, setTotalAmount] = useState({ regular: 0, discounted: 0 });
+  const [totalAmt, setTotalAmt] = useState({ regular: 0, discounted: 0 });
   const { cartProduct } = store();
 
-  const shippingAmount = 25;
-  const taxAmount = 15;
+  const shippingAmt = 25;
+  const taxAmt = 15;
 
   useEffect(() => {
     const totals = cartProduct.reduce(
@@ -23,9 +23,8 @@ const Cart = () => {
       },
       { regular: 0, discounted: 0 }
     );
-    setTotalAmount(totals);
+    setTotalAmt(totals);
   }, [cartProduct]);
-
   return (
     <Container>
       {cartProduct.length > 0 ? (
@@ -33,9 +32,10 @@ const Cart = () => {
           <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
             Shopping Cart
           </h1>
+
           <div className="mt-10 lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-12 xl:gap-x-16">
             <section className="lg:col-span-7">
-              <div className="divide-y divide-gray-200 border-b border-t border-gray-200">
+              <div className=" divide-y divide-gray-200 border-b border-t border-gray-200">
                 {cartProduct.map((product) => (
                   <CartProduct product={product} key={product?._id} />
                 ))}
@@ -43,13 +43,13 @@ const Cart = () => {
             </section>
             <section className="mt-16 rounded-lg bg-gray-50 px-4 py-6 sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8">
               <h2 className="text-lg font-medium text-gray-900">
-                Order Summary
+                Order summary
               </h2>
               <dl className="mt-6 space-y-4">
                 <div className="flex items-center justify-between">
-                  <dt className="text-sm text-gray-600">Subtotal </dt>
-                  <dd>
-                    <FormattedPrice amount={totalAmount?.regular} />
+                  <dt className="text-sm text-gray-600">Subtotal</dt>
+                  <dd className="text-sm font-medium text-gray-900">
+                    <FormattedPrice amount={totalAmt?.regular} />
                   </dd>
                 </div>
                 <div className="flex items-center justify-between border-t border-gray-200 pt-4">
@@ -62,7 +62,7 @@ const Cart = () => {
                     />
                   </dt>
                   <dd className="text-sm font-medium text-gray-900">
-                    <FormattedPrice amount={shippingAmount} />
+                    <FormattedPrice amount={shippingAmt} />
                   </dd>
                 </div>
                 <div className="flex items-center justify-between border-t border-gray-200 pt-4">
@@ -75,7 +75,7 @@ const Cart = () => {
                     />
                   </dt>
                   <dd className="text-sm font-medium text-gray-900">
-                    <FormattedPrice amount={taxAmount} />
+                    <FormattedPrice amount={taxAmt} />
                   </dd>
                 </div>
                 <div className="flex items-center justify-between border-t border-gray-200 pt-4">
@@ -84,7 +84,7 @@ const Cart = () => {
                   </dt>
                   <dd className="text-base font-medium text-gray-500">
                     <FormattedPrice
-                      amount={totalAmount?.regular - totalAmount?.discounted}
+                      amount={totalAmt?.regular - totalAmt?.discounted}
                     />
                   </dd>
                 </div>
@@ -94,17 +94,12 @@ const Cart = () => {
                   </dt>
                   <dd className="text-lg font-bold text-gray-900">
                     <FormattedPrice
-                      amount={
-                        totalAmount?.discounted + shippingAmount + taxAmount
-                      }
+                      amount={totalAmt?.discounted + shippingAmt + taxAmt}
                     />
                   </dd>
                 </div>
               </dl>
-              <CheckoutButton
-                products={cartProduct}
-                totalAmount={totalAmount}
-              />
+              <CheckoutButton products={cartProduct} />
             </section>
           </div>
         </>
@@ -114,7 +109,7 @@ const Cart = () => {
             Shopping Cart
           </h1>
           <p className="text-lg max-w-[600px] text-center text-gray-600 tracking-wide leading-6">
-            Your Cart is empty. Lorem ipsum, dolor sit amet consectetur
+            Your cart is empty. Lorem ipsum, dolor sit amet consectetur
             adipisicing elit. Repellendus libero ab nulla iure quibusdam
             obcaecati debitis minima explicabo quidem tenetur ad, voluptate
             iusto ratione natus. Maxime molestiae doloremque eaque nesciunt!
@@ -123,7 +118,7 @@ const Cart = () => {
             to={"/product"}
             className="bg-gray-800 text-gray-200 px-8 py-4 rounded-md hover:bg-black hover:text-white duration-200 uppercase text-sm font-semibold tracking-wide"
           >
-            Go to Shop
+            go to shopping
           </Link>
         </div>
       )}

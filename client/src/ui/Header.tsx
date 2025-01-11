@@ -120,7 +120,11 @@ const Header = () => {
         <div className="flex items-center gap-x-6 text-2xl">
           <Link to={"/profile"}>
             {currentUser ? (
-              <img src={currentUser?.avatar} alt="profileImage" className="w-6 h-6 rounded-full object-cover" />
+              <img
+                src={currentUser?.avatar}
+                alt="profileImage"
+                className="w-6 h-6 rounded-full object-cover"
+              />
             ) : (
               <FiUser className="hover:text-skyText duration-200 cursor-pointer" />
             )}

@@ -29,7 +29,7 @@ const responsive = {
 };
 
 const BannerCategories = () => {
-  const [searchText, setSearchText] = useState("");
+  
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {

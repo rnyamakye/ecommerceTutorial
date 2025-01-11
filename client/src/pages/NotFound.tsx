@@ -35,7 +35,6 @@ const links = [
     icon: HiRss,
   },
 ];
-
 const NotFound = () => {
   const { pathname } = useLocation();
   const path = pathname.split("/").filter(Boolean).pop();
@@ -53,14 +52,14 @@ const NotFound = () => {
               does not exist
             </h1>
             <p className="mt-2 text-base leading-7 text-gray-600 sm:mt-6 sm:text-lg sm:leading-8">
-              Sorry, we couldn't find the {path} you're looking for.
+              Sorry, we couldn’t find the {path} page you’re looking for.
             </p>
           </div>
           <div className="mx-auto mt-6 flow-root max-w-lg">
             <h2 className="sr-only">Popular pages</h2>
             <ul
               role="list"
-              className="divide-y divide-gray-900/5 border-b border-gray-900/5 flex flex-col "
+              className="divide-y divide-gray-900/5 border-b border-gray-900/5 flex flex-col"
             >
               {links.map((link, linkIdx) => (
                 <li
@@ -73,10 +72,11 @@ const NotFound = () => {
                       aria-hidden="true"
                     />
                   </div>
-                  <div>
+                  <div className="flex-auto">
                     <h3 className="text-sm font-semibold leading-6 text-gray-900">
                       <a href={link.href}>
                         <span className="absolute inset-0" aria-hidden="true" />
+                        {link.name}
                       </a>
                     </h3>
                     <p className="mt-2 text-sm leading-6 text-gray-600">

@@ -156,7 +156,7 @@ export const store = create<StoreType>()(
       },
     }),
     {
-      name: "supergear-storage",
+      name: "warehouse-store",
       storage: customStorage,
     }
   )

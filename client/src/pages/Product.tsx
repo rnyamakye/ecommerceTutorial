@@ -5,13 +5,13 @@ import { ProductProps } from "../../type";
 import { getData } from "../lib";
 import Loading from "../ui/Loading";
 import Container from "../ui/Container";
-import _, { divide } from "lodash";
+import _ from "lodash";
 import PriceTag from "../ui/PriceTag";
 import { MdOutlineStarOutline } from "react-icons/md";
 import { FaRegEye } from "react-icons/fa";
 import FormattedPrice from "../ui/FormattedPrice";
 import { IoClose } from "react-icons/io5";
-import AddToCartButton from "../ui/AddToCartButton";
+import AddToCartBtn from "../ui/AddToCartButton";
 import { productPayment } from "../assets";
 import ProductCard from "../ui/ProductCard";
 import CategoryFilters from "../ui/CategoryFilters";
@@ -41,7 +41,7 @@ const Product = () => {
           setProductData(null);
         }
       } catch (error) {
-        console.error("Error Fetching data", error);
+        console.error("Error fetching data", error);
       } finally {
         setLoading(false);
       }
@@ -80,7 +80,7 @@ const Product = () => {
                   ))}
                 </div>
                 <div>
-                  <img src={imgUrl} alt="mainImg" />
+                  <img src={imgUrl} alt="mainImage" />
                 </div>
               </div>
               <div className="flex flex-col gap-4">
@@ -98,8 +98,8 @@ const Product = () => {
                       <MdOutlineStarOutline />
                       <MdOutlineStarOutline />
                       <MdOutlineStarOutline />
-                      <p className="text-base font-semibold">{`(${productData?.reviews} reviews)`}</p>
                     </div>
+                    <p className="text-base font-semibold">{`(${productData?.reviews} reviews)`}</p>
                   </div>
                 </div>
                 <p className="flex items-center">
@@ -107,7 +107,7 @@ const Product = () => {
                   <span className="font-semibold mr-1">
                     {productData?.reviews}
                   </span>{" "}
-                  people are viewing this item right now
+                  peoples are viewing this right now
                 </p>
                 <p>
                   You are saving{" "}
@@ -121,7 +121,7 @@ const Product = () => {
                   </span>{" "}
                   upon purchase
                 </p>
-                <div className="flex flex-col gap-2">
+                <div>
                   {color && (
                     <p>
                       Color:{" "}
@@ -141,7 +141,7 @@ const Product = () => {
                           item === color
                             ? "border border-black p-1 rounded-full"
                             : "border-transparent"
-                        } `}
+                        }`}
                       >
                         <div
                           className="w-10 h-10 rounded-full cursor-pointer"
@@ -151,51 +151,47 @@ const Product = () => {
                       </div>
                     ))}
                   </div>
-                  <div className="flex flex-col gap-5">
-                    {color && (
-                      <button
-                        onClick={() => setColor("")}
-                        className="font-semibold mt-1 flex items-center gap-1 hover:text-red-600 duration-200"
-                      >
-                        <IoClose /> Clear
-                      </button>
-                    )}
-                    <p>
-                      Brand:{" "}
-                      <span className="font-medium">{productData?.brand}</span>
-                    </p>
-                    <p>
-                      Category:{" "}
-                      <span className="font-medium">
-                        {productData?.category}
-                      </span>
-                    </p>
-                    <AddToCartButton
-                      product={productData}
-                      title="Buy now"
-                      className="bg-black/80 py-3 text-base text-gray-200 hover:scale-100 hover:text-white duration-200 w-full"
-                    />
-                    <div className="bg-[#f7f7f7] p-5 rounded-md flex flex-col items-center justify-center gap-2">
-                      <img
-                        src={productPayment}
-                        alt="payment"
-                        className="w-auto object-cover"
-                      />
-                      <p className="font-semibold">
-                        Guaranteed safe & secure checkout
-                      </p>
-                    </div>
-                  </div>
+                  {color && (
+                    <button
+                      onClick={() => setColor("")}
+                      className="font-semibold mt-1 flex items-center gap-1 hover:text-red-600 duration-200"
+                    >
+                      <IoClose /> Clear
+                    </button>
+                  )}
+                </div>
+                <p>
+                  Brand:{" "}
+                  <span className="font-medium">{productData?.brand}</span>
+                </p>
+                <p>
+                  Category:{" "}
+                  <span className="font-medium">{productData?.category}</span>
+                </p>
+                <AddToCartBtn
+                  product={productData}
+                  title="Buy now"
+                  className="bg-black/80 py-3 text-base text-gray-200 hover:scale-100 hover:text-white duration-200"
+                />
+                <div className="bg-[#f7f7f7] p-5 rounded-md flex flex-col items-center justify-center gap-2">
+                  <img
+                    src={productPayment}
+                    alt="payment"
+                    className="w-auto object-cover"
+                  />
+                  <p className="font-semibold">
+                    Guaranteed safe & secure checkout
+                  </p>
                 </div>
               </div>
             </div>
           ) : (
-            <div className=" flex items-start gap-10">
+            <div className="flex items-start gap-10">
               <CategoryFilters id={id} />
               <div>
-                <h1 className="text-4xl font-semibold text-center mb-5">
-                  Product Collection
-                </h1>
+                <p className="text-4xl font-semibold mb-5 text-center">
+                  Products Collection
+                </p>
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
                   {allProducts?.map((item: ProductProps) => (
                     <ProductCard item={item} key={item?._id} />

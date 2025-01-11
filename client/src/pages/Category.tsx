@@ -1,18 +1,17 @@
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { config } from "../config";
 import { getData } from "../lib";
 import Loading from "../ui/Loading";
 import Container from "../ui/Container";
 import CategoryFilters from "../ui/CategoryFilters";
-import { ProductProps } from "../../type";
 import ProductCard from "../ui/ProductCard";
+import { ProductProps } from "../../type";
 
 const Category = () => {
   const { id } = useParams();
   const [loading, setLoading] = useState(false);
   const [products, setProducts] = useState([]);
-
   useEffect(() => {
     const fetchData = async () => {
       const endpoint = `${config?.baseURL}/categories/${id}`;
@@ -26,15 +25,15 @@ const Category = () => {
         setLoading(false);
       }
     };
+
     fetchData();
   }, [id]);
 
   const formatId = (id: string) => {
     return id
       .replace(/([a-z])([A-Z])/g, "$1 $2")
-      .replace(/(^\w\\s\w)/g, (match) => match.toUppercase());
+      .replace(/(^\w|\s\w)/g, (match) => match.toUpperCase());
   };
-
   return (
     <div>
       {loading ? (

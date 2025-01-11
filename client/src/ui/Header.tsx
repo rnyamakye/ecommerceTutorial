@@ -32,7 +32,7 @@ const Header = () => {
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
-  const { cartProduct, favoriteProduct } = store();
+  const { cartProduct, favoriteProduct, currentUser } = store();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -119,7 +119,11 @@ const Header = () => {
         {/*Menubar */}
         <div className="flex items-center gap-x-6 text-2xl">
           <Link to={"/profile"}>
-            <FiUser className="hover:text-skyText duration-200 cursor-pointer" />
+            {currentUser ? (
+              <img src={currentUser?.avatar} alt="profileImage" className="w-6 h-6 rounded-full object-cover" />
+            ) : (
+              <FiUser className="hover:text-skyText duration-200 cursor-pointer" />
+            )}
           </Link>
           <Link to={"/favorite"} className="relative block">
             <FiStar className="hover:text-skyText duration-200 cursor-pointer" />

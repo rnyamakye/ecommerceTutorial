@@ -1,22 +1,21 @@
-import React, { useState } from "react";
-import { ProductProps } from "../../type";
 import { MdOutlineStarOutline } from "react-icons/md";
+import { ProductProps } from "../../type";
 import AddToCartButton from "./AddToCartButton";
-import FormattedPrice from "./FormattedPrice";
-import ProductCardSideNav from "./ProductCardSideNav";
+import { useState } from "react";
 import {
-  Transition,
+  Button,
   Dialog,
-  TransitionChild,
   DialogPanel,
   DialogTitle,
-  Button,
+  Transition,
+  TransitionChild,
 } from "@headlessui/react";
-import { Navigate, useNavigate } from "react-router-dom";
-
+import FormattedPrice from "./FormattedPrice";
+import ProductCardSideNav from "./ProductCardSideNav";
+import { useNavigate } from "react-router-dom";
 interface Props {
   item: ProductProps;
-  searchText?: any;
+  setSearchText?: any;
 }
 
 const ProductCard = ({ item, setSearchText }: Props) => {
@@ -26,11 +25,9 @@ const ProductCard = ({ item, setSearchText }: Props) => {
   const open = () => {
     setIsOpen(true);
   };
-
   const close = () => {
     setIsOpen(false);
   };
-
   const percentage =
     ((item?.regularPrice - item?.discountedPrice) / item?.regularPrice) * 100;
 
@@ -38,20 +35,19 @@ const ProductCard = ({ item, setSearchText }: Props) => {
     navigate(`/product/${item?._id}`);
     setSearchText && setSearchText("");
   };
-
   return (
     <div className="border border-gray-200 rounded-lg p-1 overflow-hidden hover:border-black duration-200 cursor-pointer">
       <div className="w-full h-60 relative p-2 group">
         <span
           onClick={open}
-          className="bg-black text-skyText absolute left-0 w-16 text-xs text-center py-1 rounded-md font-semibold inline-block z-10"
+          className="bg-black text-skyText absolute left-0 right-0 w-16 text-xs text-center py-1 rounded-md font-semibold inline-block z-10"
         >
           save {percentage.toFixed(0)}%
         </span>
         <img
           onClick={handleProduct}
           src={item?.images[0]}
-          alt="ProductImage"
+          alt="productImage"
           className="w-full h-full rounded-md object-cover group-hover:scale-110 duration-300"
         />
         <ProductCardSideNav product={item} />
@@ -68,40 +64,39 @@ const ProductCard = ({ item, setSearchText }: Props) => {
           <MdOutlineStarOutline />
           <MdOutlineStarOutline />
         </div>
-        <AddToCartButton className="" product={item}/>
+        <AddToCartButton product={item} />
       </div>
-      <Transition show={isOpen} appear>
+      <Transition appear show={isOpen}>
         <Dialog
-          as={"div"}
-          className={"relative z-10 focus:outline-none"}
+          as="div"
+          className="relative z-10 focus:outline-none"
           onClose={close}
         >
-          <div className="fixed inset-0 z-10 w-screen overflow-y-auto ">
+          <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
             <div className="flex min-h-full items-center justify-center p-4">
               <TransitionChild
                 enter="ease-out duration-300"
-                enterFrom="opacity-0 transition-[scale(95%)]"
-                enterTo="opacity-100 transition-[scale(100%)]"
+                enterFrom="opacity-0 transform-[scale(95%)]"
+                enterTo="opacity-100 transform-[scale(100%)]"
                 leave="ease-in duration-200"
                 leaveFrom="opacity-100 transform-[scale(100%)]"
                 leaveTo="opacity-0 transform-[scale(95%)]"
               >
-                <DialogPanel
-                  className={
-                    "w-full max-w-md rounded-xl bg-black backdrop-blur-2xl z-50 p-6"
-                  }
-                >
-                  <DialogTitle className={"text-base/7 font-medium text-white"}>
-                    Hurry Up!
+                <DialogPanel className="w-full max-w-md rounded-xl bg-black backdrop-blur-2xl z-50 p-6">
+                  <DialogTitle
+                    as="h3"
+                    className="text-base/7 font-medium text-whiteText"
+                  >
+                    Hurry up!
                   </DialogTitle>
-                  <p>
+                  <p className="mt-2 text-sm/6 text-white/50">
                     You are going to save{" "}
-                    <span>
+                    <span className="text-skyText">
                       <FormattedPrice
                         amount={item?.regularPrice - item?.discountedPrice}
                       />{" "}
                     </span>
-                    From this product.{" "}
+                    from this product.
                   </p>
                   <p className="text-sm/6 text-white/50">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.

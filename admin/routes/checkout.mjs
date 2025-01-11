@@ -6,11 +6,11 @@ const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
 
 router.post("/checkout", async (req, res) => {
   const stripe = new Stripe(stripeSecretKey, {
-    apiVersion: "2024-06-20",
+    apiVersion: '2024-12-18.acacia',
   });
   try {
     const { items, email } = await req.body;
-
+    
     const extractingItems = await items.map((item) => ({
       quantity: item.quantity,
       price_data: {
@@ -23,7 +23,7 @@ router.post("/checkout", async (req, res) => {
         },
       },
     }));
-
+        
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       line_items: extractingItems,

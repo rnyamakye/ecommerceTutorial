@@ -7,6 +7,7 @@ interface Props {
   showButton?: boolean;
   link?: string;
   className?: string;
+  twMerge?: string
 }
 
 const LinkButton = ({ showButton, link, className }: Props) => {

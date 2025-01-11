@@ -5,6 +5,7 @@ interface Props {
   regularPrice?: number;
   discountedPrice?: number;
   className?: string;
+  twMerge?: string;
 }
 
 const PriceTag = ({ regularPrice, discountedPrice, className }: Props) => {

@@ -16,6 +16,7 @@ const AddToCartButton = ({
   title?: string;
   product?: ProductProps;
   showPrice?: boolean;
+  twMerge?: string;
 }) => {
   const [existingProduct, setExistingProduct] = useState<ProductProps | null>(
     null

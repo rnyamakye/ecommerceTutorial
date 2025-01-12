@@ -17,7 +17,6 @@ import { getData } from "../lib";
 import { CategoryProps, ProductProps } from "../../type";
 import ProductCard from "./ProductCard";
 import { store } from "../lib/store";
-// import Search from "./Search";
 
 const bottomNavigation = [
   { title: "Home", link: "/" },

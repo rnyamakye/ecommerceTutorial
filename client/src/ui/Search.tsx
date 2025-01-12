@@ -13,7 +13,11 @@ const Search = () => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const searchRef = useRef<HTMLDivElement | null>(null); // Specified type for ref
-
+  const handleClickOutside = (event) => {
+    if (searchRef.current && !searchRef.current.contains(event.target)) {
+      setIsSearchVisible(false);
+    }
+  };
   const handleSearchToggle = () => {
     setIsSearchVisible(!isSearchVisible);
   };
@@ -50,16 +54,6 @@ const Search = () => {
     );
     setFilteredProducts(filtered);
   }, [searchText]);
-
-  const handleClickOutside = (event: MouseEvent) => {
-    // Explicitly typed event
-    if (
-      searchRef.current &&
-      !searchRef.current.contains(event.target as Node)
-    ) {
-      setIsSearchVisible(false);
-    }
-  };
 
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);

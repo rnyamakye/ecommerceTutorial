@@ -56,7 +56,7 @@ const ProductCard = ({ item, setSearchText }: Props) => {
         <h3 className="text-xs uppercase font-semibold text-lightText">
           {item?.overView}
         </h3>
-        <h2 className="text-lg font-bold line-clamp-2">{item?.name}</h2>
+        <h2 className="text-lg md:text-lg font-bold line-clamp-2">{item?.name}</h2>
         <div className="text-base text-lightText flex items-center">
           <MdOutlineStarOutline />
           <MdOutlineStarOutline />

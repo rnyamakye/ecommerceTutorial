@@ -4,6 +4,13 @@ import { feSpotLight } from "framer-motion/client";
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
+    screens: {
+      sm: "200px",
+      smd: "540px",
+      md: "720px",
+      lg: "1080px",
+      xl: "1440px",
+    },
     extend: {
       colors: {
         redText: "#FF6363",

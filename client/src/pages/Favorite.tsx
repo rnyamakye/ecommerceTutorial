@@ -30,7 +30,7 @@ const Favorite = () => {
         </div>
       ) : (
         <div>
-          <h2>Nothing added to favorite</h2>
+          <h2 className="text-center text-2xl font-bold">Nothing added to Favorite yet</h2>
         </div>
       )}
     </Container>

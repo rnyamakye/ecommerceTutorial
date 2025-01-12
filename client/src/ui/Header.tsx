@@ -17,6 +17,7 @@ import { getData } from "../lib";
 import { CategoryProps, ProductProps } from "../../type";
 import ProductCard from "./ProductCard";
 import { store } from "../lib/store";
+import Search from "./Search";
 
 const bottomNavigation = [
   { title: "Home", link: "/" },
@@ -33,6 +34,7 @@ const Header = () => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const { cartProduct, favoriteProduct, currentUser } = store();
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -69,17 +71,17 @@ const Header = () => {
 
   return (
     <div className="w-full bg-whiteText md:sticky md:top-0 z-50">
-      <div className="max-w-screen-xl mx-auto h-20 flex items-center justify-between">
+      <div className="max-w-screen-xl mx-4 md:mx-auto h-16 md:h-20  flex items-center justify-between">
         <Link to={"/"}>
-          <img src={logo} alt="logo" className="w-44" />{" "}
+          <img src={logo} alt="logo" className="w-40 md:w-44 " />{" "}
         </Link>
-        <div className="hidden md:inline-flex max-w-3xl w-full relative ">
+        <div className="hidden md:inline-flex max-w-3xl w-72 relative ">
           <input
             type="text"
             onChange={(e) => setSearchText(e.target.value)}
             value={searchText}
-            placeholder="Search products..."
-            className="w-full flex-1 rounded-full text-gray-900 text-lg placeholder:text-base placeholder:tracking-wide shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 placeholder:font-normal focus-ring-2 focus:ring-darkText sm:text-sm px-4 py-2"
+            placeholder="Search..."
+            className={`w-40 flex-1 rounded-full text-gray-900 text-lg placeholder:text-base placeholder:tracking-wide shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 placeholder:font-normal focus-ring-2 focus:ring-darkText sm:text-sm px-4 py-2`}
           />
           {searchText ? (
             <IoClose
@@ -93,7 +95,7 @@ const Header = () => {
         {/*Search product will go here */}
 
         {searchText && (
-          <div className="absolute left-0 top-20 w-full mx-auto max-h-[500px] px-10 py-5 bg-white z-20 overflow-y-scroll cursor-pointer text-black shadow-lg shadow-skyTexts scrollbar-hide">
+          <div className="absolute left-0 top-20 w-full mx-auto max-h-[500px] px-10 py-5 bg-white z-20 overflow-y-scroll cursor-pointer text-black shadow-lg shadow-skyText scrollbar-hide">
             {filteredProducts.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-3">
                 {filteredProducts?.map((item: ProductProps) => (
@@ -118,6 +120,7 @@ const Header = () => {
 
         {/*Menubar */}
         <div className="flex items-center gap-x-6 text-2xl">
+          <Search />
           <Link to={"/profile"}>
             {currentUser ? (
               <img
@@ -131,24 +134,24 @@ const Header = () => {
           </Link>
           <Link to={"/favorite"} className="relative block">
             <FiStar className="hover:text-skyText duration-200 cursor-pointer" />
-            <span className="inline-flex items-center justify-center bg-redText text-whiteText absolute -top-1 -right-2 text-[9px] w-4 h-4 rounded-full">
+            <span className="inline-flex items-center justify-center bg-skyText text-blackText absolute -top-1 -right-2 text-[9px] w-4 h-4 rounded-full">
               {favoriteProduct?.length > 0 ? favoriteProduct?.length : "0"}
             </span>
           </Link>
           <Link to={"/cart"} className="relative block">
             <FiShoppingBag className="hover:text-skyText duration-200 cursor-pointer" />
-            <span className="inline-flex items-center justify-center bg-redText text-whiteText absolute -top-1 -right-2 text-[9px] w-4 h-4 rounded-full">
+            <span className="inline-flex items-center justify-center bg-skyText text-blackText absolute -top-1 -right-2 text-[9px] w-4 h-4 rounded-full">
               {cartProduct?.length > 0 ? cartProduct?.length : "0"}
             </span>
           </Link>
         </div>
       </div>
       <div className="w-full bg-darkText text-whiteText">
-        <Container className="py-2 max-w-4xl flex items-center gap-5 justify-between">
+        <Container className="py-3 md:py-2 max-w-4xl flex items-center gap-5 justify-between">
           <Menu>
             <MenuButton
               className={
-                "inline-flex items-center gap-3 rounded-md border-gray-400 hover:border-white border  py-1.5 px-3 font-semibold text-gray-300 hover:text-whiteText duration-200"
+                "inline-flex items-center gap-3 rounded-md border-gray-400 hover:border-white border py-2 md:py-1.5 px-3 font-semibold text-gray-300 hover:text-whiteText duration-200"
               }
             >
               Select Category <FaChevronDown className="text-base mt-1" />

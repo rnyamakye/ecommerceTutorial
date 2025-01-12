@@ -42,7 +42,10 @@ const Hightlights = () => {
               <h3 className="text-2xl font-bold max-w-44">{item?.name}</h3>
               <p className="text-base font-bold mt-4">{item?.title}</p>
             </div>
-            <Link to={item?._base} className="text-base font-normal">
+            <Link
+              to={item?._base}
+              className="w-40 flex items-center justify-center bg-whiteText text-darkText hover:bg-darkText hover:text-whiteText duration-200 border rounded-full py-2"
+            >
               {item?.buttonTitle}
             </Link>
           </div>

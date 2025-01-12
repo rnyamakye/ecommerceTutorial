@@ -53,13 +53,13 @@ const BannerCategories = () => {
       transitionDuration={1000}
       customRightArrow={<CustomRightArrow />}
       customLeftArrow={<CustomLeftArrow />}
-      className="flex flex-row p-4 max-w-screen-xl mx-auto lg:px-0 relative"
+      className="flex flex-row p-4 max-w-screen-xl mx-3 md:mx-auto lg:px-0 relative"
     >
       {categories.map((item: CategoryProps) => (
         <Link
           key={item?._id}
           to={`category/${item?._base}`}
-          className="flex items-center gap-x-2 p-1 border border-gray-100 mr-1 flex-1 rounded-md hover:border-skyText hover:shadow-lg"
+          className="flex items-center gap-x-2 p-1.5 md:p-1 border border-gray-100 w-[90vw] justify-center md:justify-start md:w-full md:mr-1 md:flex-1 rounded-md hover:border-skyText hover:shadow-lg"
         >
           <img
             src={item?.image}

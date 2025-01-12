@@ -108,7 +108,7 @@ const Cart = () => {
           <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
             Shopping Cart
           </h1>
-          <p className="text-lg max-w-[600px] text-center text-gray-600 tracking-wide leading-6">
+          <p className="text-lg max-w-[600px] text-center text-gray-600 tracking-wide leading-6 p-3">
             Your cart is empty. Lorem ipsum, dolor sit amet consectetur
             adipisicing elit. Repellendus libero ab nulla iure quibusdam
             obcaecati debitis minima explicabo quidem tenetur ad, voluptate

@@ -4,12 +4,12 @@ import LinkButton from "./LinkButton";
 
 const HomeBanner = () => {
   return (
-    <Container className="relative py-5 overflow-hidden">
-      <div className="relative ">
+    <Container className="relative h-full md:py-5 overflow-hidden">
+      <div className="relative">
         <img
           src={homeBanner}
           alt="HomeBanner"
-          className="w-full h-full object-cover rounded-md"
+          className="w-full h-60 md:h-full object-cover rounded-lg md:rounded-md"
         />
         <div className="w-full h-full absolute top-0 left-0 bg-black/10" />
       </div>

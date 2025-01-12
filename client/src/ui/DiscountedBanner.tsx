@@ -43,19 +43,19 @@ const DiscountedBanner = () => {
         <img
           src={discountImgOne}
           alt="discountedImageOne"
-          className="hidden lg:inline-flexh-36"
+          className="hidden lg:inline-flex-36"
         />
         <div className="flex flex-col flex-1 gap-x-1 items-center">
           <div className="flex items-center justify-center gap-x-3 text-xl md:text-4xl font-bold">
-            <h2>Sony Headphone</h2>
+            <h2 className="">Sony Headphone</h2>
             <Link
               to={"/product"}
-              className="border border-red-600 px-4 py-2 text-red-600 rounded-full"
+              className="border border-red-600 px-3 py-1 font-semibold md:px-4 md:py-2 text-red-600 rounded-full"
             >
               discount 20%
             </Link>
           </div>
-          <p className="text-sm text-gray-600 font-medium">
+          <p className="text-sm mt-2 text-gray-600 font-medium">
             You're out to play or stepping out to make{" "}
           </p>
         </div>
@@ -68,35 +68,35 @@ const DiscountedBanner = () => {
       <div className="mt-7">
         <p className="font-bold text-2xl ">Brands We Distribute</p>
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 mt-7">
-          <div className="border border-r-0  border-gray-300 flex items-center justify-center px-6 py-2 cursor-pointer group">
+          <div className="border md:border-r-0  border-gray-300 flex items-center justify-center px-6 py-2 cursor-pointer group">
             <img
               src={brandOne}
               alt="brandOne"
               className="w-36 h-auto group-hover:opacity-50 duration-200"
             />
           </div>
-          <div className="border border-r-0  border-gray-300 flex items-center justify-center px-6 py-2 cursor-pointer group">
+          <div className="border md:border-r-0  border-gray-300 flex items-center justify-center px-6 py-2 cursor-pointer group">
             <img
               src={brandTwo}
               alt="brandOne"
               className="w-36 h-auto group-hover:opacity-50 duration-200"
             />
           </div>
-          <div className="border border-r-0  border-gray-300 flex items-center justify-center px-6 py-2 cursor-pointer group">
+          <div className="border md:border-r-0  border-gray-300 flex items-center justify-center px-6 py-2 cursor-pointer group">
             <img
               src={brandThree}
               alt="brandOne"
               className="w-36 h-auto group-hover:opacity-50 duration-200"
             />
           </div>
-          <div className="border border-r-0  border-gray-300 flex items-center justify-center px-6 py-2 cursor-pointer group">
+          <div className="border md:border-r-0  border-gray-300 flex items-center justify-center px-6 py-2 cursor-pointer group">
             <img
               src={brandFour}
               alt="brandOne"
               className="w-36 h-auto group-hover:opacity-50 duration-200"
             />
           </div>
-          <div className="border border-r-0  border-gray-300 flex items-center justify-center px-6 py-2 cursor-pointer group">
+          <div className="border md:border-r-0  border-gray-300 flex items-center justify-center px-6 py-2 cursor-pointer group">
             <img
               src={brandFive}
               alt="brandOne"

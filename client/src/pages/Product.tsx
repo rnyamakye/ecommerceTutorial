@@ -89,7 +89,7 @@ const Product = () => {
                   <PriceTag
                     regularPrice={productData?.regularPrice}
                     discountedPrice={productData?.discountedPrice}
-                    className="text-xl"
+                    className="text-lg md:text-xl"
                   />
                   <div className="flex items-center gap-1">
                     <div className="text-base text-lightText flex items-center">

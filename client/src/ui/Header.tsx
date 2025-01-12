@@ -17,7 +17,7 @@ import { getData } from "../lib";
 import { CategoryProps, ProductProps } from "../../type";
 import ProductCard from "./ProductCard";
 import { store } from "../lib/store";
-import Search from "./Search";
+// import Search from "./Search";
 
 const bottomNavigation = [
   { title: "Home", link: "/" },
@@ -34,7 +34,6 @@ const Header = () => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const { cartProduct, favoriteProduct, currentUser } = store();
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -120,7 +119,7 @@ const Header = () => {
 
         {/*Menubar */}
         <div className="flex items-center gap-x-6 text-2xl">
-          <Search />
+          {/* <Search /> */}
           <Link to={"/profile"}>
             {currentUser ? (
               <img

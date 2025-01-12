@@ -6,15 +6,20 @@ import { config } from "../config";
 import ProductCard from "./ProductCard";
 import { ProductProps } from "../../type";
 
+
 const Search = () => {
   const [isSearchVisible, setIsSearchVisible] = useState(false);
   const [searchText, setSearchText] = useState("");
-  const [setCategories] = useState([]); // Corrected here
+  const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
-  const searchRef = useRef<HTMLDivElement | null>(null); // Specified type for ref
-  const handleClickOutside = (event) => {
-    if (searchRef.current && !searchRef.current.contains(event.target)) {
+  const searchRef = useRef<HTMLDivElement | null>(null); // Specify ref type
+  const handleClickOutside = (event: MouseEvent) => {
+    // Check if the click target is outside the searchRef
+    if (
+      searchRef.current &&
+      !searchRef.current.contains(event.target as Node)
+    ) {
       setIsSearchVisible(false);
     }
   };

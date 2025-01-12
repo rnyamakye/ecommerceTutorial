@@ -9,7 +9,7 @@ import { ProductProps } from "../../type";
 const Search = () => {
   const [isSearchVisible, setIsSearchVisible] = useState(false);
   const [searchText, setSearchText] = useState("");
-  const [categories, setCategories] = useState([]); // Corrected here
+  const [setCategories] = useState([]); // Corrected here
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const searchRef = useRef<HTMLDivElement | null>(null); // Specified type for ref
@@ -51,8 +51,12 @@ const Search = () => {
     setFilteredProducts(filtered);
   }, [searchText]);
 
-  const handleClickOutside = (event: MouseEvent) => { // Explicitly typed event
-    if (searchRef.current && !searchRef.current.contains(event.target)) {
+  const handleClickOutside = (event: MouseEvent) => {
+    // Explicitly typed event
+    if (
+      searchRef.current &&
+      !searchRef.current.contains(event.target as Node)
+    ) {
       setIsSearchVisible(false);
     }
   };
@@ -72,7 +76,9 @@ const Search = () => {
           <button
             type="button"
             onClick={handleSearchToggle}
-            className={`flex items-center ml-2 ${isSearchVisible ? "hidden" : "block"}`}
+            className={`flex items-center ml-2 ${
+              isSearchVisible ? "hidden" : "block"
+            }`}
           >
             <IoSearchOutline />
           </button>
@@ -84,7 +90,11 @@ const Search = () => {
               onChange={(e) => setSearchText(e.target.value)}
               value={searchText}
               placeholder="Search..."
-              className={`translate-x-5 flex-1 pl-10 rounded-full text-gray-900 text-lg placeholder:text-base placeholder:tracking-wide shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 placeholder:font-normal focus-ring-2 focus:ring-darkText sm:text-sm px-4 py-2 transition-all duration-300 ${isSearchVisible ? "w-[10rem] transition-all ease-in-out duration-300 opacity-100 bg-gray-50" : "w-0 opacity-0"}`}
+              className={`translate-x-5 flex-1 pl-10 rounded-full text-gray-900 text-lg placeholder:text-base placeholder:tracking-wide shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 placeholder:font-normal focus-ring-2 focus:ring-darkText sm:text-sm px-4 py-2 transition-all duration-300 ${
+                isSearchVisible
+                  ? "w-[10rem] transition-all ease-in-out duration-300 opacity-100 bg-gray-50"
+                  : "w-0 opacity-0"
+              }`}
             />
             {isSearchVisible ? (
               <IoClose
@@ -101,7 +111,11 @@ const Search = () => {
             {filteredProducts.length > 0 ? (
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
                 {filteredProducts?.map((item: ProductProps) => (
-                  <ProductCard key={item?._id} item={item} setSearchText={setSearchText} />
+                  <ProductCard
+                    key={item?._id}
+                    item={item}
+                    setSearchText={setSearchText}
+                  />
                 ))}
               </div>
             ) : (

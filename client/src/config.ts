@@ -8,13 +8,13 @@ const checkConfig = (server: string): Config | {} => {
     case "production":
       config = {
         baseURL:
-          "https://ecommerce-tutorial-git-main-richard-nyamekyes-projects.vercel.app/",
+          "https://ecommerce-tutorial-richard-nyamekyes-projects.vercel.app/",
       };
       break;
     case "local":
       config = {
         baseURL:
-          "https://ecommerce-tutorial-git-main-richard-nyamekyes-projects.vercel.app/",
+          "https://ecommerce-tutorial-richard-nyamekyes-projects.vercel.app/",
       };
       break;
     default:

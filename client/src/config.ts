@@ -7,14 +7,12 @@ const checkConfig = (server: string): Config | {} => {
   switch (server) {
     case "production":
       config = {
-        baseURL:
-          "https://ecommerce-tutorial-richard-nyamekyes-projects.vercel.app/",
+        baseURL: "https://ecommerce-tutorial-steel.vercel.app/",
       };
       break;
     case "local":
       config = {
-        baseURL:
-          "https://ecommerce-tutorial-richard-nyamekyes-projects.vercel.app/",
+        baseURL: "https://ecommerce-tutorial-steel.vercel.app/",
       };
       break;
     default:

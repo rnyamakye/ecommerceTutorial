@@ -6,11 +6,11 @@ const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
 
 router.post("/checkout", async (req, res) => {
   const stripe = new Stripe(stripeSecretKey, {
-    apiVersion: '2024-12-18.acacia',
+    apiVersion: "2024-12-18.acacia",
   });
   try {
     const { items, email } = await req.body;
-    
+
     const extractingItems = await items.map((item) => ({
       quantity: item.quantity,
       price_data: {
@@ -23,14 +23,14 @@ router.post("/checkout", async (req, res) => {
         },
       },
     }));
-        
+
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       line_items: extractingItems,
       mode: "payment",
       success_url:
-        "http://localhost:5173/success?session_id={CHECKOUT_SESSION_ID}",
-      cancel_url: "http://localhost:5173/cancel",
+        "https://ecommerce-tutorial-hkfr.vercel.app/success?session_id={CHECKOUT_SESSION_ID}",
+      cancel_url: "https://ecommerce-tutorial-hkfr.vercel.app/cancel",
       metadata: {
         email,
       },
